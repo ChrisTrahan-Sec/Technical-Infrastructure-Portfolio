@@ -17,7 +17,7 @@ Optimized an Intel i7-7700 system to reliably host isolated virtual machines usi
 
 ### 3. Deployment Challenges & Resolutions Log
 
-This log documents key obstacles encountered during setup and the professional resolutions implemented.
+This log documents key obstacles encountered during setup and the professional resolutions implemented across both the Hybrid Lab and the recent GitHub/Email configuration.
 
 | Challenge Area | Problem Description | Resolution Strategy |
 | :--- | :--- | :--- |
@@ -27,8 +27,29 @@ This log documents key obstacles encountered during setup and the professional r
 | **Application Block** | Windows 11 **Smart App Control** blocked the Sunshine installer. | Temporarily disabled SAC via Windows Security panel; immediately re-enabled SAC post-installation. |
 | **Connectivity** | Host PC not discoverable in Moonlight client search (different subnets). | Implemented **Tailscale** VPN and used manual IP entry for direct connectivity. |
 | **Firewall/Download Block** | Tailscale installer stuck at 0% download on client laptop due to network security policies. | Bypassed restrictions using **PowerShell `winget install`** command. |
-| **GitHub Workflow** | Difficulty integrating Git for Windows with VS Code Command Palette. | Relaunched VS Code to recognize Git installation; utilized **Git Credential Manager** for seamless authentication. |
+| **Email Auth Failure** | DMARC check failed despite SPF passing in initial tests (SPF/DKIM misalignment). | Ensured emails were sent via Zoho SMTP to include the DKIM signature; confirmed `DKIM: PASS` and `DMARC: PASS` via original message headers. |
+| **HTTPS Activation** | "Enforce HTTPS" button was unclickable after successful DNS check. | Resolved temporary browser caching issue by activating the setting via an **incognito window**. |
 
 ### 4. Status & Future Work
 The hybrid lab is operational. This setup validates understanding of virtualization, RDP alternatives, VPN tunneling, and hardware-level security configuration.
+
+## Infrastructure & Stack
+This portfolio demonstrates foundational skills in **DNS Management**, **Email Authentication**, and **Version Control/DevOps**. The entire system is built and maintained with a total cost of ownership of **$11.08 per year**.
+
+| Component | Service Used | Purpose |
+| :--- | :--- | :--- |
+| **Domain Registrar** | Porkbun | Domain purchase and DNS management. |
+| **Web Hosting** | GitHub Pages | Static site hosting directly from this repository. |
+| **Email Hosting** | Zoho Mail | Professional, free "forever" mailbox (`chris@qfwllc.com`). |
+| **Email Auth** | SPF, DKIM, DMARC | Domain security protocols verified and enforced. |
+
+---
+
+## Security & DNS Configuration
+*   **HTTPS:** Enforced via GitHub Pages SSL certificates (**Active**).
+*   **DNS Management:** A-Records and CNAMEs configured in Porkbun pointing traffic here.
+*   **Email Security:** MX, SPF, DKIM, and DMARC records are configured, verified, and passing security audits for optimal email deliverability and authentication.
+
+> [!SUCCESS]
+> The website is fully active and securely reachable via HTTPS at **`https://qfwlc.com`**.
 
